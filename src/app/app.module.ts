@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginformComponent } from './components/loginform/loginform.component';
-import { PokemonCollectionListComponent } from './components/pokemon-collection-list/pokemon-collection-list.component';
 import { PokemonCatalogueComponent } from './components/pokemon-catalogue/pokemon-catalogue.component';
 import { PokemonCollectionComponent } from './components/pokemon-collection/pokemon-collection.component';
 import { PokemonCollectionItemComponent } from './components/pokemon-collection/pokemon-collection-item/pokemon-collection-item.component';
@@ -18,7 +17,6 @@ import { CataloguePageComponent } from './pages/catalogue-page/catalogue-page.co
   declarations: [
     AppComponent,
     LoginformComponent,
-    PokemonCollectionListComponent,
     PokemonCatalogueComponent,
     PokemonCollectionComponent,
     PokemonCollectionItemComponent,
