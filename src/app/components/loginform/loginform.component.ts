@@ -8,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class LoginformComponent implements OnInit {
 
   constructor() { }
+  currentText: string = "please login"
+  handleLogin(): void
+  {
+    this.currentText = "you have logged in"
+  }
 
   ngOnInit(): void {
   }
