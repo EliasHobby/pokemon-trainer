@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { TrainerService } from 'src/app/services/trainer.service';
 
 @Component({
   selector: 'app-loginform',
   templateUrl: './loginform.component.html',
   styleUrls: ['./loginform.component.scss']
 })
-export class LoginformComponent implements OnInit {
+export class LoginformComponent {
 
-  constructor() { }
-  currentText: string = "please login"
-  handleLogin(): void
+  constructor(private readonly trainerService: TrainerService) { }
+
+  handleLogin(trainerForm: NgForm): void
   {
-    this.currentText = "you have logged in"
+    const {username} = trainerForm.value; 
+    console.log(this.trainerService.getTrainerById(1))
   }
 
   ngOnInit(): void {

@@ -1,3 +1,10 @@
-<p>{{currentText}}</p>
-<form></form>
-<button (click)="handleLogin()">Submit</button>
+<form #trainerForm="ngForm" (ngSubmit)="handleLogin(trainerForm)">
+    <input type="text"
+    ngModel
+    #username="ngModel"
+    required
+    name="username"
+    id="username"
+    placeholder="What is your name?" />
+    <button type="submit">OK</button>
+</form>
