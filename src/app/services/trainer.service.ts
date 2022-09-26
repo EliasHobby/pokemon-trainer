@@ -10,7 +10,7 @@ import { Trainer } from '../models/trainer';
 export class TrainerService {
 
   private _trainer:Trainer = { id: 0, username: '', pokemon:[]}
-  private trainerAPI = 'https://fredrik-elias-pokemon-api.herokuapp.com/trainers' //FIXME to environment
+  private trainerAPI =  environment.trainerAPI;
   constructor(private readonly http: HttpClient) { }
 
 
