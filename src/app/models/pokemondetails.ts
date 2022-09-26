@@ -1,4 +1,3 @@
-declare module namespace {
 
     export interface Ability2 {
         name: string;
@@ -336,7 +335,7 @@ declare module namespace {
         type: Type2;
     }
 
-    export interface PokemonDetails  {
+    export interface Details  {
         abilities: Ability[];
         base_experience: number;
         forms: Form[];
@@ -350,12 +349,9 @@ declare module namespace {
         name: string;
         order: number;
         past_types: any[];
-        species: Species;
-        sprites: Sprites;
+        species?: Species;
+        sprites?: Sprites;
         stats: Stat[];
         types: Type[];
         weight: number;
     }
-
-}
-
