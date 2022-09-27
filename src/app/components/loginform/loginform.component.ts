@@ -1,23 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { TrainerService } from 'src/app/services/trainer.service';
-
+import { Trainer } from 'src/app/models/trainer';
+import { LoginService } from 'src/app/services/login-service/login.service';
+import { environment } from 'src/environments/environment';
+const { API_KEY } = environment;
+const { trainerAPI } = environment;
 @Component({
   selector: 'app-loginform',
   templateUrl: './loginform.component.html',
   styleUrls: ['./loginform.component.scss']
 })
 export class LoginformComponent {
+  constructor(private readonly loginService: LoginService) { }
 
-  constructor(private readonly trainerService: TrainerService) { }
+  loginSubmit(loginForm: NgForm): void {
+    const { username } = loginForm.value;
 
-  handleLogin(trainerForm: NgForm): void
-  {
-    const {username} = trainerForm.value; 
-    console.log(this.trainerService.getTrainerById(1))
+    this.loginService.login(username)
+    .subscribe({
+      next: (trainer: Trainer) => {
+
+      },
+      error: () => {
+
+      }
+    })
   }
 
-  ngOnInit(): void {
-  }
 
 }
