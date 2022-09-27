@@ -1,17 +1,17 @@
-<mat-card *ngIf="pokemon" style="text-align:center;">
-  <mat-card-title>{{pokemon.name}}</mat-card-title>
+<mat-card *ngIf="pokemon" style="display:flex; flex-direction: column; align-items: center; width:100%; text-align: center;">
+  <mat-card-title>{{upperCaseFirstLetterName(pokemon.name)}}</mat-card-title>
   <img mat-card-lg-image src="{{getImageLink(pokemon.url)}}"> 
   <mat-card-content>
-    <app-collect-pokemon-button [pokemonUrl]="pokemon.url"></app-collect-pokemon-button>
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header >
         <mat-panel-title style="justify-content: center !important;">Details</mat-panel-title>
       </mat-expansion-panel-header>
       <ng-template matExpansionPanelContent>
-          <app-pokemon-catalogue-item-details [id]="getPokemonId(pokemon.url)"></app-pokemon-catalogue-item-details>
-        </ng-template>
+        <app-pokemon-catalogue-item-details [id]="getPokemonId(pokemon.url)"></app-pokemon-catalogue-item-details>
+      </ng-template>
     </mat-expansion-panel>
   </mat-card-content>
+  <app-collect-pokemon-button [pokemonUrl]="pokemon.url" style="margin:5px"></app-collect-pokemon-button>
   <mat-card-actions>
   </mat-card-actions>
 </mat-card>

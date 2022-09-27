@@ -1,4 +1,14 @@
 .toolbar {
     flex: 1 1 auto;
-    background-color: red;
+    justify-content: space-between;
+    background-color: rgb(255, 197, 38);
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-height: 55px;
+}
+
+.logo:hover {
+    outline: none;
 }

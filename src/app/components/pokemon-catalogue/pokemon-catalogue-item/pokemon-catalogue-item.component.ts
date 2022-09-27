@@ -20,6 +20,12 @@ export class PokemonCatalogueItemComponent implements OnInit {
   }
   constructor() { }
 
+  upperCaseFirstLetterName(name: string): string
+  {
+    let first = name.substring(0,1).toUpperCase()
+    return first + name.substring(1)
+  }
+
   ngOnInit(): void {
   }
 
