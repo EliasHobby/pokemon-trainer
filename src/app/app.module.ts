@@ -15,6 +15,7 @@ import { TrainerPageComponent } from './pages/trainer-page/trainer-page.componen
 import { CataloguePageComponent } from './pages/catalogue-page/catalogue-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../material.module';
+import { CollectPokemonButtonComponent } from './components/collect-pokemon-button/collect-pokemon-button/collect-pokemon-button.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MaterialModule } from '../material.module';
     PokemonCatalogueItemDetailsComponent,
     LandingPageComponent,
     TrainerPageComponent,
-    CataloguePageComponent
+    CataloguePageComponent,
+    CollectPokemonButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,7 @@ import { MaterialModule } from '../material.module';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
