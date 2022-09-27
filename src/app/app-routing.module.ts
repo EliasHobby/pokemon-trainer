@@ -25,7 +25,11 @@ const routes: Routes = [
     path: 'catalogue',
     component: CataloguePageComponent,
     canActivate: [ AuthGuard ]
-  }
+  },
+  {
+    path: '**',
+    component: LandingPageComponent
+  },
 ];
 
 @NgModule({

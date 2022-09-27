@@ -6,8 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginformComponent } from './components/loginform/loginform.component';
 import { PokemonCatalogueComponent } from './components/pokemon-catalogue/pokemon-catalogue.component';
-import { PokemonCollectionComponent } from './components/pokemon-collection/pokemon-collection.component';
-import { PokemonCollectionItemComponent } from './components/pokemon-collection/pokemon-collection-item/pokemon-collection-item.component';
 import { PokemonCatalogueItemComponent } from './components/pokemon-catalogue/pokemon-catalogue-item/pokemon-catalogue-item.component';
 import { PokemonCatalogueItemDetailsComponent } from './components/pokemon-catalogue/pokemon-catalogue-item/pokemon-catalogue-item-details/pokemon-catalogue-item-details.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
@@ -23,8 +21,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AppComponent,
     LoginformComponent,
     PokemonCatalogueComponent,
-    PokemonCollectionComponent,
-    PokemonCollectionItemComponent,
     PokemonCatalogueItemComponent,
     PokemonCatalogueItemDetailsComponent,
     LandingPageComponent,
