@@ -37,7 +37,7 @@ import { MaterialModule } from '../material.module';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

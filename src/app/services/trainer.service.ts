@@ -1,26 +1,53 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, finalize } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Trainer } from '../models/trainer';
+import { StorageUtil } from '../utils/Storage';
+import { StorageKeys } from '../utils/StorageKeys';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrainerService {
 
-  private _trainer:Trainer = { id: 0, username: '', pokemon:[]}
   private trainerAPI =  environment.trainerAPI;
-  constructor(private readonly http: HttpClient) { }
+  private _error: string = ""
+  private _loading: boolean = false
+  
+  private _trainer?:Trainer;
+
+  constructor(private readonly http: HttpClient) { 
+    this._trainer =  StorageUtil.localStorageRead<Trainer>(StorageKeys.Trainer);
+  }
 
 
-  get trainer()
-  {
+  get trainer() : Trainer | undefined {
     return this._trainer;
   }
 
-  getTrainerById(id: number) : Observable<Trainer>
+  set trainer(trainer: Trainer | undefined) {
+    StorageUtil.localStorageWrite<Trainer>(StorageKeys.Trainer, trainer!);
+    this._trainer = trainer;
+  }
+
+  getTrainerById(id: number) : void
   {
-    return this.http.get<Trainer>(`${this.trainerAPI}${id}`)
+    this.http.get<Trainer>(`${this.trainerAPI}${id}`)
+    this._loading = true
+    this.http.get<Trainer>(this.trainerAPI)
+    .pipe(
+      finalize(() => {
+        this._loading = false
+      })
+    )
+    .subscribe({
+      next: (trainer: Trainer) => {
+        this._trainer = trainer
+      },
+      error: (error: HttpErrorResponse) => {
+        this._error = error.message
+      }
+    })
   }
 }

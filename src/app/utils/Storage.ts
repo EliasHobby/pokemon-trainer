@@ -4,19 +4,19 @@ export class StorageUtil {
         sessionStorage.setItem(key, JSON.stringify(value));
     }
 
-    public static sessionStorageRead<T>(key: string): T | null
+    public static sessionStorageRead<T>(key: string): T | undefined
     {
         const storedValue = sessionStorage.getItem(key);
         try {
             if(storedValue){
                 return JSON.parse(storedValue) as T;
             }
-            return null
+            return undefined;
         }
         catch(error)
         {
             sessionStorage.removeItem(key)
-            return null;
+            return undefined;
         }
     }
 
@@ -26,19 +26,19 @@ export class StorageUtil {
         localStorage.setItem(key, JSON.stringify(value));
     }
 
-    public static localStorageRead<T>(key: string): T | null
+    public static localStorageRead<T>(key: string): T | undefined
     {
         const storedValue = localStorage.getItem(key);
         try {
             if(storedValue){
                 return JSON.parse(storedValue) as T;
             }
-            return null
+            return undefined;
         }
         catch(error)
         {
             localStorage.removeItem(key)
-            return null;
+            return undefined;
         }
     }
 }
