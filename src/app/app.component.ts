@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {MatCardModule} from '@angular/material/card'; 
 import { PokemonService } from './services/pokemon-service/pokemon.service';
 import { TrainerService } from './services/trainer.service';
 
