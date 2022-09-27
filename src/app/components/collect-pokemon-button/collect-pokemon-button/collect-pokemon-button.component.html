@@ -1,12 +1,12 @@
 <aside>
-    <button (click)="onCollectClick()">
+    <button (click)="onCollectClick()" class="pokeball-button">
 
      <ng-container *ngIf="isCollected; then collected else notCollected"></ng-container>   
     <ng-template #collected>
-        <img src="../../../../assets/icons8-pokeball-100.png" alt="" style="height: 50px; width: 50px;">
+        <img src="../../../../assets/icons8-pokeball-100.png" alt="" style="height: 70px; width: 70px;">
     </ng-template>
     <ng-template #notCollected>
-        <img src="../../../../assets/icons8-open-pokeball-100.png" alt="" style="height: 50px; width: 50px;">
+        <img src="../../../../assets/icons8-open-pokeball-100.png" alt="" style="height: 70px; width: 70px;">
     </ng-template>
     </button>
 </aside>
