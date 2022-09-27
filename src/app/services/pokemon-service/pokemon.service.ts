@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { finalize, Observable, tap } from 'rxjs';
 import { PokeListObject, Pokemon } from 'src/app/models/pokemon';
 import { StorageUtil } from 'src/app/utils/Storage';
+import { StorageKeys } from 'src/app/utils/StorageKeys';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,8 @@ export class PokemonService {
   constructor(private readonly http: HttpClient) { }
 
   public getPokemon(): void {
-    if(StorageUtil.sessionStorageRead('pokemon') != null)
-      this._pokemons = StorageUtil.sessionStorageRead('pokemon') as Pokemon[]
+    if(StorageUtil.sessionStorageRead(StorageKeys.Pokemon) != null)
+      this._pokemons = StorageUtil.sessionStorageRead(StorageKeys.Pokemon) as Pokemon[]
     else
       this.getAllPokemon()
   }
@@ -43,7 +44,7 @@ export class PokemonService {
         this._loading = false
       }),
       tap((pokeListObject: PokeListObject) => {
-        StorageUtil.sessionStorageWrite('pokemon',pokeListObject.results)
+        StorageUtil.sessionStorageWrite(StorageKeys.Pokemon,pokeListObject.results)
       })
     )
     .subscribe({
@@ -54,5 +55,9 @@ export class PokemonService {
         this._error = error.message
       }
     })
+  }
+
+  public pokemonById(url: string): Pokemon | undefined {
+    return this._pokemons.find((pokemon: Pokemon) => pokemon.url === url);
   }
 }

@@ -1,26 +1,47 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { Pokemon } from '../models/pokemon';
 import { Trainer } from '../models/trainer';
+import { StorageUtil } from '../utils/Storage';
+import { StorageKeys } from '../utils/StorageKeys';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrainerService {
+  
+  private _trainer?:Trainer;
 
-  private _trainer:Trainer = { id: 0, username: '', pokemon:[]}
-  private trainerAPI =  environment.trainerAPI;
-  constructor(private readonly http: HttpClient) { }
-
-
-  get trainer()
-  {
+  get trainer() : Trainer | undefined {
     return this._trainer;
   }
+  
+  set trainer(trainer: Trainer | undefined) {
+    StorageUtil.localStorageWrite<Trainer>(StorageKeys.Trainer, trainer!);
+    this._trainer = trainer;
+  }
+  
+  constructor(private readonly http: HttpClient) { 
+    this._trainer =  StorageUtil.localStorageRead<Trainer>(StorageKeys.Trainer);
+  }
 
-  getTrainerById(id: number) : Observable<Trainer>
-  {
-    return this.http.get<Trainer>(`${this.trainerAPI}${id}`)
+  public inCollection(pokemonUrl: string): boolean {
+    if (this._trainer) {
+      return Boolean(this.trainer?.pokemon.find((pokemon: Pokemon) => pokemon.url === pokemonUrl));
+    } else {
+      return false;
+    }
+  }
+
+  public addToCollection(pokemon: Pokemon): void {
+    if (this._trainer) {
+      this._trainer.pokemon.push(pokemon);
+    }
+  } 
+
+  public removeFromCollection(url: string): void {
+    if(this._trainer) {
+      this._trainer.pokemon = this._trainer.pokemon.filter((pokemon: Pokemon) => pokemon.url !== url);
+    }
   }
 }

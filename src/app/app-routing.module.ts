@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 import { CataloguePageComponent } from './pages/catalogue-page/catalogue-page.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { TrainerPageComponent } from './pages/trainer-page/trainer-page.component';
@@ -9,7 +10,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'landing'
+    redirectTo: '/landing'
   },
   {
     path: 'landing',
@@ -17,11 +18,13 @@ const routes: Routes = [
   },
   {
     path: 'trainer',
-    component: TrainerPageComponent
+    component: TrainerPageComponent,
+    canActivate: [ AuthGuard ]
   },
   {
     path: 'catalogue',
-    component: CataloguePageComponent
+    component: CataloguePageComponent,
+    canActivate: [ AuthGuard ]
   }
 ];
 
