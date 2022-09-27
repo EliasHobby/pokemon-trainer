@@ -1,5 +1,12 @@
 <aside>
     <button (click)="onCollectClick()">
-    <span class="material-icons">add_shopping_cart</span>
+
+     <ng-container *ngIf="isCollected; then collected else notCollected"></ng-container>   
+    <ng-template #collected>
+        <img src="../../../../assets/icons8-pokeball-100.png" alt="" style="height: 50px; width: 50px;">
+    </ng-template>
+    <ng-template #notCollected>
+        <img src="../../../../assets/icons8-open-pokeball-100.png" alt="" style="height: 50px; width: 50px;">
+    </ng-template>
     </button>
 </aside>
