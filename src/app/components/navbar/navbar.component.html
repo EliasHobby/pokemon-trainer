@@ -1,0 +1,7 @@
+<mat-toolbar-row role="heading" class="toolbar">
+    <span>Pokemon</span>
+    <ng-container *ngIf="trainer !== undefined">
+        <a mat-button routerLink="trainer"><mat-icon fontIcon="person"></mat-icon>Trainer</a>
+        <a mat-button routerLink="catalogue"><mat-icon fontIcon="list"></mat-icon>Catalogue</a>
+    </ng-container>
+</mat-toolbar-row>

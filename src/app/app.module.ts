@@ -15,6 +15,7 @@ import { TrainerPageComponent } from './pages/trainer-page/trainer-page.componen
 import { CataloguePageComponent } from './pages/catalogue-page/catalogue-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../material.module';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MaterialModule } from '../material.module';
     PokemonCatalogueItemDetailsComponent,
     LandingPageComponent,
     TrainerPageComponent,
-    CataloguePageComponent
+    CataloguePageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
