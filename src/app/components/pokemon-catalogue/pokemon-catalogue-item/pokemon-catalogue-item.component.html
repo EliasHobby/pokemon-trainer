@@ -1,15 +1,17 @@
-<mat-card class="card" *ngIf="pokemon"> 
-    <mat-card-title>{{pokemon.name}}</mat-card-title>
-    <img mat-card-image src="{{getImageLink(pokemon.url)}}">
-    <mat-card-subtitle>collect</mat-card-subtitle>
+<mat-card *ngIf="pokemon" style="text-align:center;">
+  <mat-card-title>{{pokemon.name}}</mat-card-title>
+  <img mat-card-lg-image src="{{getImageLink(pokemon.url)}}"> 
+  <mat-card-content>
     <mat-expansion-panel hideToggle>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Details
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <ng-template matExpansionPanelContent>
-            <app-pokemon-catalogue-item-details [id]="getPokemonId(pokemon.url)"></app-pokemon-catalogue-item-details>
-          </ng-template>
-      </mat-expansion-panel>
+      <mat-expansion-panel-header >
+        <mat-panel-title style="justify-content: center !important;">Details</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+          <app-pokemon-catalogue-item-details [id]="getPokemonId(pokemon.url)"></app-pokemon-catalogue-item-details>
+        </ng-template>
+    </mat-expansion-panel>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="accent">Add to collection</button>
+  </mat-card-actions>
 </mat-card>
