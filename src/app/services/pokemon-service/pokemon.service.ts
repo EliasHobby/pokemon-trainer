@@ -29,14 +29,14 @@ export class PokemonService {
   
   constructor(private readonly http: HttpClient) { }
 
-  public getPokemon(): void {
-    if(StorageUtil.sessionStorageRead(StorageKeys.Pokemon) != null)
-      this._pokemons = StorageUtil.sessionStorageRead(StorageKeys.Pokemon) as Pokemon[]
-    else
-      this.getAllPokemon()
-  }
-
   public getAllPokemon(): void {
+
+    if(StorageUtil.sessionStorageRead(StorageKeys.Pokemon) !== undefined)
+    {
+      this._pokemons = StorageUtil.sessionStorageRead(StorageKeys.Pokemon) as Pokemon[]
+      return;
+    }
+    
     this._loading = true
     this.http.get<PokeListObject>(this._api)
     .pipe(
