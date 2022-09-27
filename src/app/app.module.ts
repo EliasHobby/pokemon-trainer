@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http' 
 import { FormsModule } from '@angular/forms';
-import {MatCardModule} from '@angular/material/card'; 
-import {MatExpansionModule} from '@angular/material/expansion';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginformComponent } from './components/loginform/loginform.component';
@@ -16,6 +14,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { TrainerPageComponent } from './pages/trainer-page/trainer-page.component';
 import { CataloguePageComponent } from './pages/catalogue-page/catalogue-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '../material.module';
 
 @NgModule({
   declarations: [
@@ -34,10 +33,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatCardModule,
+    MaterialModule,
     FormsModule,
     HttpClientModule,
-    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
