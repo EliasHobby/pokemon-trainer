@@ -18,6 +18,6 @@ export class AppComponent {
 
     ngOnInit(): void {
       if(this.trainerService.trainer)
-        this.pokemonService.getPokemon()
+        this.pokemonService.getAllPokemon()
     }
 }
