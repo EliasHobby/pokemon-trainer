@@ -1,5 +1,5 @@
-<ul>
-    <app-pokemon-catalogue-item *ngFor="let pokemon of pokemons"
-    [pokemon]="pokemon">
-    </app-pokemon-catalogue-item>
-</ul>
+<mat-grid-list cols="3" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let pokemon of pokemons">
+        <app-pokemon-catalogue-item [pokemon]="pokemon"> </app-pokemon-catalogue-item>
+    </mat-grid-tile>
+</mat-grid-list>
