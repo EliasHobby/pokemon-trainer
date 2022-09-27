@@ -2,6 +2,7 @@
   <mat-card-title>{{pokemon.name}}</mat-card-title>
   <img mat-card-lg-image src="{{getImageLink(pokemon.url)}}"> 
   <mat-card-content>
+    <app-collect-pokemon-button [pokemonUrl]="pokemon.url"></app-collect-pokemon-button>
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header >
         <mat-panel-title style="justify-content: center !important;">Details</mat-panel-title>
@@ -12,6 +13,5 @@
     </mat-expansion-panel>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button color="accent">Add to collection</button>
   </mat-card-actions>
 </mat-card>

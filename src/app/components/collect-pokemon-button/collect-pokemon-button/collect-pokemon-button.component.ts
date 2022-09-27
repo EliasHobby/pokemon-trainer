@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { Trainer } from 'src/app/models/trainer';
 import { PokemonCollectionService } from 'src/app/services/pokemon-collection/pokemon-collection.service';
 
 @Component({
@@ -24,7 +25,7 @@ export class CollectPokemonButtonComponent implements OnInit {
   onCollectClick(): void {
     this.pokemonCollection.addToCollection(this.pokemonUrl)
       .subscribe({
-        next: (response: any) => {
+        next: (response: Trainer) => {
           console.log("NEXT: ", response);
         },
         error: (error: HttpErrorResponse) => {

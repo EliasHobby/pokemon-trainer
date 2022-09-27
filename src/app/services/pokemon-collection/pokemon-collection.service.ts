@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { finalize, Observable } from 'rxjs';
+import { finalize, Observable, tap } from 'rxjs';
 import { Pokemon } from 'src/app/models/pokemon';
 import { Trainer } from 'src/app/models/trainer';
 import { environment } from 'src/environments/environment';
@@ -27,7 +27,7 @@ export class PokemonCollectionService {
   ) { }
   // Get the pokemon based on the Id
 
-  public addToCollection(url: string): Observable<any> {
+  public addToCollection(url: string): Observable<Trainer> {
     if (!this.trainerService.trainer) {
       throw new Error("addToCollection: There is no trainer");
     }
@@ -38,22 +38,25 @@ export class PokemonCollectionService {
       throw new Error("addToCollection: No pokemon with id: " + url);
     }
 
-    if(this.trainerService.inCollection(url)) {
+    if (this.trainerService.inCollection(url)) {
       throw new Error("addToCollection: Pokemon already in collection: " + url);
     }
 
-    const headers = new HttpHeaders ({
+    const headers = new HttpHeaders({
       'content-type': 'application/json',
       'x-api-key': API_KEY
     })
 
     this._loading = true;
 
-    return this.http.patch(`${trainerAPI}/${trainer.id}`, {
+    return this.http.patch<Trainer>(`${trainerAPI}/${trainer.id}`, {
       pokemon: [...trainer.pokemon, pokemon]
     }, {
       headers
-    }).pipe (
+    }).pipe(
+      tap((updatedTrainer: Trainer) => {
+        this.trainerService.trainer = updatedTrainer;
+      }),
       finalize(() => {
         this._loading = false;
       })
