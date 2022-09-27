@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "node server.js",
     "serve": "ng serve",
-    "build": "ng build --save-dev @types/node",
+    "build": "ng build,
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
