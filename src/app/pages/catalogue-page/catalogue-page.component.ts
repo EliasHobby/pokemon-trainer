@@ -19,7 +19,7 @@ export class CataloguePageComponent implements OnInit {
   constructor(private readonly pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-    this.pokemonService.getPokemon()
+    this.pokemonService.getAllPokemon()
   }
 
 
