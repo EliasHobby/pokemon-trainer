@@ -26,7 +26,7 @@ export class LoginService {
           return of(trainer);
         }),
         tap((trainer: Trainer) => {
-          StorageUtil.sessionStorageWrite<Trainer>(StorageKeys.Trainer, trainer);
+          StorageUtil.localStorageWrite<Trainer>(StorageKeys.Trainer, trainer);
         })
       )
   }
