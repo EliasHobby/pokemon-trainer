@@ -25,7 +25,6 @@ export class PokemonCollectionService {
     private readonly pokemonService: PokemonService,
     private readonly trainerService: TrainerService
   ) { }
-  // Get the pokemon based on the Id
 
   public addToCollection(url: string): Observable<Trainer> {
     if (!this.trainerService.trainer) {
@@ -38,8 +37,11 @@ export class PokemonCollectionService {
       throw new Error("addToCollection: No pokemon with id: " + url);
     }
 
+    // Is pokemon in collection already
     if (this.trainerService.inCollection(url)) {
-      throw new Error("addToCollection: Pokemon already in collection: " + url);
+      this.trainerService.removeFromCollection(url);
+    } else {
+      this.trainerService.addToCollection(pokemon);
     }
 
     const headers = new HttpHeaders({
@@ -50,7 +52,7 @@ export class PokemonCollectionService {
     this._loading = true;
 
     return this.http.patch<Trainer>(`${trainerAPI}/${trainer.id}`, {
-      pokemon: [...trainer.pokemon, pokemon]
+      pokemon: [...trainer.pokemon] // Already updated
     }, {
       headers
     }).pipe(
