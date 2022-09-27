@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, of, switchMap } from 'rxjs';
 import { Trainer } from 'src/app/models/trainer';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 const { trainerAPI } = environment;
 const { API_KEY } = environment;
 
