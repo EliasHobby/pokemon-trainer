@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Trainer } from 'src/app/models/trainer';
 import { LoginService } from 'src/app/services/login-service/login.service';
 import { TrainerService } from 'src/app/services/trainer.service';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 const { API_KEY } = environment;
 const { trainerAPI } = environment;
 @Component({

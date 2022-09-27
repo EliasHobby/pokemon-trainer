@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { finalize, Observable, tap } from 'rxjs';
 import { Pokemon } from 'src/app/models/pokemon';
 import { Trainer } from 'src/app/models/trainer';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { PokemonService } from '../pokemon-service/pokemon.service';
 import { TrainerService } from '../trainer.service';
 
