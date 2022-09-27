@@ -1,1 +1,5 @@
-<p>pokemon-catalogue works!</p>
+<ul>
+    <app-pokemon-catalogue-item *ngFor="let pokemon of pokemons"
+    [pokemon]="pokemon">
+    </app-pokemon-catalogue-item>
+</ul>
